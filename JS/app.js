@@ -1,35 +1,17 @@
-// "use strict";
+"use strict";
 
-// const myQuote = document.getElementById("myQuote");
-// const myMeme = document.getElementById("myMeme");
-// const myBear = document.getElementById("myBear");
+const myQuote = document.getElementById("myQuote");
+const myMeme = document.getElementById("myMeme");
+const myButton = document.getElementById("quoteBTN");
 
-// //Event Listener
-// const myButton = document.getElementById("quoteBTN");
-// const myBearBTN = document.getElementById("bearBTN");
-// myBearBTN.addEventListener("click", DisplayBear)
-// myButton.addEventListener("click", DisplayQuote);
+const myBear = document.getElementById("myBear");
+const myBearBTN = document.getElementById("bearBTN");
 
+
+//Event Listener
+myBearBTN.addEventListener("click", DisplayBear);
 
 //Create a f(x) to fecth api data and display image
-function DisplayQuote() {
-
-    // alert('This button works.'); //Testing the button - it works!
-
-    //Fetch the data
-    const baseURL = "https://programming-quotesapi.vercel.app/api/random";
-    //You can declare the url and CHANGE IT later on, rather than replacing every URL 
-
-    fetch(baseURL)
-    .then(response => response.json())
-    .then(quote => {
-        //Write a conditional that checks API, and outputs that its busy 
-        myQuote.innerHTML = `"${quote.quote}"\n - ${quote.author}`
-    })
-
-    DisplayMeme();    
-}
-
 function DisplayMeme() {
 
     // alert('This button works.'); //Testing the button - it works!
@@ -55,18 +37,28 @@ function DisplayMeme() {
     })
 }
 
-function DisplayBear() {
+function DisplayQuote() {
 
     // alert('This button works.'); //Testing the button - it works!
 
     //Fetch the data
-    const baseURL = "https://placebear.com/200/300";
+    const baseURL = "https://programming-quotesapi.vercel.app/api/random";
     //You can declare the url and CHANGE IT later on, rather than replacing every URL 
 
     fetch(baseURL)
     .then(response => response.json())
-    .then(bear => {
-       console.log(bear);
+    .then(quote => {
+        //Write a conditional that checks API, and outputs that its busy 
+        myQuote.innerHTML = `"${quote.quote}"\n - ${quote.author}`
     })
-   
+
+    DisplayMeme();    
 }
+
+function DisplayBear() {
+
+   let randomBearNum = Math.floor(Math.random()*2000);
+    
+    myBear.src = `https://placebear.com/${randomBearNum}/${randomBearNum}`;
+}
+
