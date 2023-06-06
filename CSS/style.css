@@ -5,10 +5,9 @@
 * {
 font-family: 'Playfair Display', serif;
 }
-.center, section {
-  display: block;
-    padding: 100px;
-    justify-content: center;
-    align-items: center;
+.center {
+  display: flex;
+  flex-direction: column;
+align-items:center;
 }
 
