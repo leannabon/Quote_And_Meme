@@ -1,6 +1,7 @@
 "use strict";
 
 const myQuote = document.getElementById("myQuote");
+const myMeme = document.getElementById("myMeme");
 
 //Event Listener
 const myButton = document.getElementById("quoteBTN");
@@ -24,3 +25,28 @@ function DisplayQuote() {
     })
 }
 
+function DisplayMeme() {
+
+    // alert('This button works.'); //Testing the button - it works!
+
+    //Fetch the data
+    const base_URL = "https://api.imgflip.com/get_memes";
+    //You can declare the url and CHANGE IT later on, rather than replacing every URL 
+
+    fetch(base_URL)
+    .then(response => response.json())
+    .then(memes => {
+        //You can use console.log to inspect the returning .json array
+        //console.log(memes) //returns the .json object
+        //console.log(memes.data) //returns/opens the array of objects)
+
+        //We want to get the key-value of the .jpg link to make our generator.
+        //console.log(memes.data.memes) //returns just the memes array
+        // console.log(memes.data.memes[0].url) //returns the FIRST OBJECT's url key-value
+        let randomizedNum = Math.floor(Math.random()*memes.data.memes.length);
+
+        myMeme.src = memes.data.memes[randomizedNum].url;
+    })
+}
+
+DisplayMeme();
