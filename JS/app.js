@@ -1,11 +1,14 @@
-"use strict";
+// "use strict";
 
-const myQuote = document.getElementById("myQuote");
-const myMeme = document.getElementById("myMeme");
+// const myQuote = document.getElementById("myQuote");
+// const myMeme = document.getElementById("myMeme");
+// const myBear = document.getElementById("myBear");
 
-//Event Listener
-const myButton = document.getElementById("quoteBTN");
-myButton.addEventListener("click", DisplayQuote);
+// //Event Listener
+// const myButton = document.getElementById("quoteBTN");
+// const myBearBTN = document.getElementById("bearBTN");
+// myBearBTN.addEventListener("click", DisplayBear)
+// myButton.addEventListener("click", DisplayQuote);
 
 
 //Create a f(x) to fecth api data and display image
@@ -50,4 +53,20 @@ function DisplayMeme() {
         myMeme.src = memes.data.memes[randomizedNum].url;
         // console.log(memes.data.memes[randomizedNum].url); //This is to test
     })
+}
+
+function DisplayBear() {
+
+    // alert('This button works.'); //Testing the button - it works!
+
+    //Fetch the data
+    const baseURL = "https://placebear.com/200/300";
+    //You can declare the url and CHANGE IT later on, rather than replacing every URL 
+
+    fetch(baseURL)
+    .then(response => response.json())
+    .then(bear => {
+       console.log(bear);
+    })
+   
 }
