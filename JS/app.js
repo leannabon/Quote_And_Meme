@@ -23,6 +23,8 @@ function DisplayQuote() {
         //Write a conditional that checks API, and outputs that its busy 
         myQuote.innerHTML = `"${quote.quote}"\n - ${quote.author}`
     })
+
+    DisplayMeme();    
 }
 
 function DisplayMeme() {
@@ -46,7 +48,6 @@ function DisplayMeme() {
         let randomizedNum = Math.floor(Math.random()*memes.data.memes.length);
 
         myMeme.src = memes.data.memes[randomizedNum].url;
+        // console.log(memes.data.memes[randomizedNum].url); //This is to test
     })
 }
-
-DisplayMeme();
